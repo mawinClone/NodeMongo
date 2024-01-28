@@ -1,10 +1,14 @@
 const express = require('express');
 const app = express();
+const router = require('./routes/myRouter');
 const PORT = 8080;
 
+const Product = require('./models/product')
 
+// app.use(express.json());
+// mongodb://localhost:27017
 
-app.use(express.json());
+app.use(router);
 
 const product = [
     {
@@ -17,12 +21,13 @@ const product = [
         company: 'Apple',
     },{
         name: 'iphone1000',
-        image: 'https://i.pinimg.com/originals/2f/9c/37/2f9c371868b24f149e1586c7a12f87cc.jpg',
         company: 'Apple',
+        image: 'https://i.pinimg.com/originals/2f/9c/37/2f9c371868b24f149e1586c7a12f87cc.jpg',
     }
 ]
 
 app.get('/product',(req, res)=>{
+    console.log("app get product");
     res.status(200).json(product);
 })
 
