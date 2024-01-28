@@ -3,10 +3,7 @@ const app = express();
 const router = require('./routes/myRouter');
 const PORT = 8080;
 
-const Product = require('./models/product')
-
-// app.use(express.json());
-// mongodb://localhost:27017
+const Product = require('./models/product') //เรียกใช้งาน model -> mongoDB สร้าง db, collection
 
 app.use(router);
 
