@@ -2,11 +2,12 @@
 const mongoose = require('mongoose'); 
 const dbUrl = 'mongodb://localhost:27017/productDB'; // เอามาจาก mongoDB compass
 
+
 //เชื่อม mongodb
 mongoose.connect(dbUrl,{
     useNewUrlParser: true,
     useUnifiedTopology: true
-}).catch(err=>{console.log(err);});
+}).catch(err=>console.log(err));
     
 // schema design
 let productSchema =  mongoose.Schema({
@@ -20,3 +21,7 @@ let Product =  mongoose.model("products", productSchema); // เป็นกา�
 
 // export model
 module.exports = Product;
+
+module.exports.saveProduct=function(model,data){
+    model.save(data)
+}

@@ -1,13 +1,21 @@
+
+// save data to mongo
+// get data from mongo
+// jwt login
+// get data by user
+// get product by id
+
 const express = require('express');
 const app = express();
 const router = require('./routes/myRouter');
 const PORT = process.env.Port || 8080;
 
-const Product = require('./models/product') //เรียกใช้งาน model -> mongoDB สร้าง db, collection
 
-app.use(router);
+
+
 app.use(express.json()); // for read json raw body from client
 app.use(express.urlencoded({extended: false})); // body parser 
+app.use(router);
 
 const product = [ // data
     {
