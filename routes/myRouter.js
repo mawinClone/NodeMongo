@@ -10,9 +10,14 @@ router.get("/",(req, res)=>{
 router.get('/product',(req, res, next)=>{ 
     
     console.log("router get product!");
-
     next(); // do next /product path 
-
 })
+router.get('/postcheck',(req, res)=>{ 
+    
+    res.status(200)
+    res.type("text/plain");
+    res.send("response from post router");
+})
+
 
 module.exports = router; // ส่งออกให้ index require

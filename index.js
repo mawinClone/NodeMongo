@@ -1,13 +1,15 @@
 const express = require('express');
 const app = express();
 const router = require('./routes/myRouter');
-const PORT = 8080;
+const PORT = process.env.Port || 8080;
 
 const Product = require('./models/product') //เรียกใช้งาน model -> mongoDB สร้าง db, collection
 
 app.use(router);
+app.use(express.json()); // for read json raw body from client
+app.use(express.urlencoded({extended: false})); // body parser 
 
-const product = [
+const product = [ // data
     {
         name: 'IPhone20',
         image: 'https://t1.daumcdn.net/cfile/tistory/121C3C345051A6361D',
@@ -26,6 +28,11 @@ const product = [
 app.get('/product',(req, res)=>{
     console.log("app get product");
     res.status(200).json(product);
+})
+
+app.post('/postcheck',(req, res)=>{
+    console.log("post check ", req.body.name);
+    res.status(200).send('post ok')
 })
 
 app.listen(PORT,()=>{
